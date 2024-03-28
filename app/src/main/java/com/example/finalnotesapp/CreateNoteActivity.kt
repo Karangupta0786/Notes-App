@@ -43,8 +43,6 @@ class CreateNoteActivity : AppCompatActivity() {
             val intent = Intent()
             intent.action = Intent.ACTION_SEND
 
-//            Intent.normalizeMimeType("text/plain")
-
             intent.putExtra(Intent.EXTRA_TEXT,"$title\n\n$desc")
 
             intent.type = "text/plain"
