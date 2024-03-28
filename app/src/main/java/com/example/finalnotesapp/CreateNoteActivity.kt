@@ -36,6 +36,23 @@ class CreateNoteActivity : AppCompatActivity() {
             binding.edtTitle.setText(title)
         }
 
+        binding.imgShare.setOnClickListener {
+            val title = binding.edtTitle.text.toString()
+            val desc = binding.edtNote.text.toString()
+            Log.e("Sharing-> ","title: $title and desc: $desc")
+            val intent = Intent()
+            intent.action = Intent.ACTION_SEND
+
+//            Intent.normalizeMimeType("text/plain")
+
+            intent.putExtra(Intent.EXTRA_TEXT,"$title\n\n$desc")
+
+            intent.type = "text/plain"
+
+            startActivity(Intent.createChooser(intent,"Share via"))
+
+        }
+
         binding.imgSaveCreateNote.setOnClickListener {
             if (Globals.isUpdating){
                 val title = binding.edtTitle.text.toString()
