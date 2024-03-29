@@ -1,26 +1,22 @@
-# H1 
+# Project Setup
 
-## H2
 
-### H3
+      //Add Plugins
+      id("kotlin-kapt")
+      
+       // Room
+       implementation("androidx.room:room-runtime:2.6.1")
+       
+       // To use Kotlin annotation processing tool (kapt)
+       kapt("androidx.room:room-compiler:2.6.1")
+       implementation("androidx.room:room-ktx:2.6.1")
 
-#### H4 hai yeh
+       // ViewModel
+       implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
 
-Ye thi hamari heading 
-- Ye h bulllet point
-- Bulet 2
-- Bullet 3
-   - Ye h sub bullet point
-   - S Bullet 2
-   - S Bull 3
-      - Ye h S S Bull
-      - S S Bull 2
-      - SS Bull 3
+       // LiveData
+       implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
 
-Now i want to ` Highlight ` this!
-
-1. Orderd Bullet
-2. Ordder B 2
-3. 3
-
-       System.out.print();
+       // Coroutines
+       implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+       implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
