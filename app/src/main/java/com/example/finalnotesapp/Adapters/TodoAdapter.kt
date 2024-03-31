@@ -38,8 +38,6 @@ class TodoAdapter(private val applicationContext:Context, var todoList: List<Tod
         val delete:ImageView = itemView.findViewById(R.id.img_delete)
         val date:TextView = itemView.findViewById(R.id.txt_date)
 //        val priority:TextView = itemView.findViewById(R.id.txt_priority)
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
@@ -86,7 +84,7 @@ class TodoAdapter(private val applicationContext:Context, var todoList: List<Tod
 
     private fun getFormattedDate():String {
         val currDate = Date()
-        val formattedDate = SimpleDateFormat("dd/mm/yyyy hh:mm:ss",Locale.getDefault())
+        val formattedDate = SimpleDateFormat("dd/MM/yyyy hh:mm:ss",Locale.getDefault())
         return formattedDate.format(currDate)
     }
     fun onSearch(filteredList:List<Todo>){

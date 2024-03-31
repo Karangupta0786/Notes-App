@@ -12,20 +12,14 @@ import kotlinx.coroutines.launch
 
 
 class TodoRepository {
-//    lateinit var dao:TodoDao
-
     companion object{
-//        @Volatile  // updated
-        var instance:TodoDatabase? = null
+        private var instance:TodoDatabase? = null
 
         private fun getDatabase(context: Context):TodoDatabase?{
             instance = TodoDatabase.initialiseDatabase(context)
             return instance
         }
-
-
     suspend fun insertTodo(context: Context,todo: Todo){
-//        dao.insertTodo(todo)
             instance = getDatabase(context)
             instance?.dao()?.insertTodo(todo)
     }
@@ -44,20 +38,6 @@ class TodoRepository {
             instance = getDatabase(context = context)
             return instance?.dao()?.getAllTodos()
         }
-
-//    suspend fun updateTodo(todo: Todo){
-//        dao.updateTodo(todo)
-//    }
-//
-//    suspend fun deleteTodo(todo: Todo){
-//        dao.deleteTodo(todo)
-//    }
-//
-//    fun getAllTodos():LiveData<List<Todo>>{
-//        return dao.getAllTodos()
-//    }
-
-
 
 }
 

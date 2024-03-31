@@ -8,7 +8,6 @@ import java.util.Date
 
 @Entity(tableName = "todo_table")
 class Todo {
-
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0
 
@@ -17,7 +16,6 @@ class Todo {
     var creationDate:String =""
 //    var priority: String
 
-
     @Ignore
     constructor(title: String, description: String,creationDate: String) {
         this.title = title
@@ -25,7 +23,6 @@ class Todo {
         this.creationDate = creationDate
 //        this.priority = priority
     }
-
 
     constructor(id: Long, title: String, description: String,creationDate:String) {
         this.id = id

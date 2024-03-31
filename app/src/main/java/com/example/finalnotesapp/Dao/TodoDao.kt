@@ -24,6 +24,4 @@ interface TodoDao {
     @Query("SELECT * FROM todo_table")
     fun getAllTodos():LiveData<List<Todo>>
 
-
-
 }

@@ -89,7 +89,7 @@ class CreateNoteActivity : AppCompatActivity() {
 
         private fun getFormattedDate():String {
             val currDate = Date()
-            val formattedDate = SimpleDateFormat("dd/mm/yyyy hh:mm:ss", Locale.getDefault())
+            val formattedDate = SimpleDateFormat("dd/MM/yyyy hh:mm:ss", Locale.getDefault())
             return formattedDate.format(currDate)
         }
 }

@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     val filteredData = list.filter {todoData->
                         todoData.title.contains(s.toString(),ignoreCase = true)
-//                        todoData.description.contains(s.toString(),ignoreCase = true)
+                        todoData.description.contains(s.toString(),ignoreCase = true)
                     }
                     adapter.onSearch(filteredData)
                 }
