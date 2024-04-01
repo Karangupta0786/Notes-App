@@ -76,17 +76,10 @@ class TodoAdapter(private val applicationContext:Context, var todoList: List<Tod
             intent.putExtra("desc",currData.description.toString())
             intent.putExtra("id",currData.id)
             Log.e("the current id is:",currData.id.toString())
-//            intent.putExtra("date",getFormattedDate())
             applicationContext.startActivity(intent)
-
         }
     }
 
-    private fun getFormattedDate():String {
-        val currDate = Date()
-        val formattedDate = SimpleDateFormat("dd/MM/yyyy hh:mm:ss",Locale.getDefault())
-        return formattedDate.format(currDate)
-    }
     fun onSearch(filteredList:List<Todo>){
         todoList = filteredList
         notifyDataSetChanged()

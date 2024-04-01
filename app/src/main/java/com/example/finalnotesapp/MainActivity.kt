@@ -28,18 +28,10 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerTodo.layoutManager = LinearLayoutManager(this)
 
 
-
+        // Initialise ViewModel
         viewModel = ViewModelProvider(this)[TodoViewModel::class.java]
 
-//        var a = Todo("Karan","he is a Good boy!!")
-//        var b = Todo("Arjun","he is a Good boy!!")
-//        CoroutineScope(Dispatchers.IO).launch {
-//            viewModel?.insert(a,this@MainActivity)
-//            viewModel?.insert(b,this@MainActivity)
-//        }
-
-
-
+        // Using the observe u will find the list of data in Lambda
         viewModel?.getAll(this)?.observe(this){list->
             adapter = TodoAdapter(this,list)
             binding.recyclerTodo.adapter = adapter
@@ -52,8 +44,7 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     val filteredData = list.filter {todoData->
-                        todoData.title.contains(s.toString(),ignoreCase = true)
-                        todoData.description.contains(s.toString(),ignoreCase = true)
+                        todoData.title.contains(s.toString(),ignoreCase = true) || todoData.description.contains(s.toString(),ignoreCase = true)
                     }
                     adapter.onSearch(filteredData)
                 }
@@ -70,8 +61,5 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity,CreateNoteActivity::class.java)
             startActivity(intent)
         }
-
-
-
     }
 }

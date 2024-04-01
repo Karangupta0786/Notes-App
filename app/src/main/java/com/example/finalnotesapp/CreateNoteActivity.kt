@@ -19,7 +19,6 @@ import java.util.Locale
 
 class CreateNoteActivity : AppCompatActivity() {
     private var viewModel: TodoViewModel? = null
-//    private lateinit var adapter: TodoAdapter
     private lateinit var binding: ActivityCreateNoteBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,27 +26,31 @@ class CreateNoteActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[TodoViewModel::class.java]
-
-        if (intent.getStringExtra("title")?.isNotEmpty() == true ||intent.getStringExtra("desc")?.isNotEmpty()==true){
+        if (intent.getStringExtra("title")?.isNotEmpty() == true || intent.getStringExtra("desc")?.isNotEmpty()==true){
+            // getting the title & desc from the Adapter if available!
             val title = intent.getStringExtra("title").toString()
             val desc = intent.getStringExtra("desc").toString()
 
-            binding.edtNote.setText(desc)
+            binding.edtNote.setText(desc)   // setting all the previous data in editText if available!!
             binding.edtTitle.setText(title)
         }
 
-        binding.imgShare.setOnClickListener {
+        binding.imgShare.setOnClickListener { // To share the data to another app.
+            // 1. store all the data in variables
             val title = binding.edtTitle.text.toString()
             val desc = binding.edtNote.text.toString()
-            Log.e("Sharing-> ","title: $title and desc: $desc")
+
+            // 2. create an intent variable.
             val intent = Intent()
+
+            // 3. set the action of intent as Intent.ACTION_SEND
             intent.action = Intent.ACTION_SEND
 
             intent.putExtra(Intent.EXTRA_TEXT,"$title\n\n$desc")
 
             intent.type = "text/plain"
 
-            startActivity(Intent.createChooser(intent,"Share via"))
+            startActivity(Intent.createChooser(intent,"Share via:"))
 
         }
 
@@ -82,9 +85,6 @@ class CreateNoteActivity : AppCompatActivity() {
                 finish()
             }
         }
-
-//        adapter.notifyDataSetChanged()
-
     }
 
         private fun getFormattedDate():String {
