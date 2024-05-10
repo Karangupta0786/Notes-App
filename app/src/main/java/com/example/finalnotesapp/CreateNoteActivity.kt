@@ -64,8 +64,6 @@ class CreateNoteActivity : AppCompatActivity() {
                     val todo = Todo(id,title,desc,getFormattedDate())
                     viewModel?.updateTodo(todo,applicationContext)
                 }
-                val intent = Intent(this,MainActivity::class.java)
-                startActivity(intent)
                 finish()
             }
             else{
@@ -80,8 +78,6 @@ class CreateNoteActivity : AppCompatActivity() {
                 CoroutineScope(Dispatchers.IO).launch {
                     viewModel?.insert(todo,this@CreateNoteActivity)
                 }
-                val intent = Intent(this,MainActivity::class.java)
-                startActivity(intent)
                 finish()
             }
         }
